@@ -11,12 +11,13 @@
             --primary: #2ecc71;
             --primary-dark: #27ae60;
             --secondary: #16a085;
-            --accent: #f39c12;
+            --accent: #f1c40f;
             --dark: #1a1a2e;
             --light: #f8f9fa;
             --success: #2ecc71;
             --text-dark: #2c3e50;
             --text-light: #7f8c8d;
+            --card-bg: #ffffff;
         }
         
         * {
@@ -130,12 +131,28 @@
             font-weight: 600;
         }
         
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
         /* Hero Section */
         .hero {
             padding: 150px 0 80px;
             display: flex;
             align-items: center;
-            background: linear-gradient(to right, #f8f9fa 60%, #e9f7ef);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
         }
         
         .hero-content {
@@ -153,31 +170,26 @@
             font-size: 3.5rem;
             margin-bottom: 20px;
             line-height: 1.2;
-            color: var(--text-dark);
-        }
-        
-        .hero h1 span {
-            color: var(--primary);
         }
         
         .hero p {
             font-size: 1.1rem;
             margin-bottom: 40px;
-            color: var(--text-light);
+            opacity: 0.9;
             line-height: 1.7;
             max-width: 600px;
         }
         
         .cta-button {
             display: inline-block;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
+            background: white;
+            color: var(--primary);
             padding: 15px 40px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 600;
             font-size: 1.1rem;
-            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
             transition: all 0.3s ease;
             border: none;
             cursor: pointer;
@@ -185,7 +197,7 @@
         
         .cta-button:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(46, 204, 113, 0.6);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.3);
         }
         
         .stats {
@@ -202,20 +214,20 @@
         .stat-number {
             font-size: 2rem;
             font-weight: 700;
-            color: var(--primary);
+            color: white;
             line-height: 1;
         }
         
         .stat-label {
             font-size: 0.9rem;
-            color: var(--text-light);
+            color: rgba(255, 255, 255, 0.8);
         }
         
         .hero-img {
             max-width: 100%;
             height: auto;
             border-radius: 20px;
-            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.2);
             transform: rotate(3deg);
             transition: transform 0.5s ease;
         }
@@ -266,7 +278,7 @@
         }
         
         .product-card {
-            background: white;
+            background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
             transition: all 0.4s ease;
@@ -386,6 +398,9 @@
             overflow: hidden;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
             animation: modalOpen 0.4s ease;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
         }
         
         @keyframes modalOpen {
@@ -424,6 +439,7 @@
         
         .modal-body {
             padding: 25px;
+            overflow-y: auto;
         }
         
         .form-group {
@@ -562,6 +578,60 @@
             margin-bottom: 10px;
         }
         
+        /* How It Works Section */
+        .how-it-works {
+            padding: 80px 0;
+            background: linear-gradient(to bottom, #f8f9fa, #e9f7ef);
+        }
+        
+        .steps {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 50px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .step-card {
+            flex: 1;
+            min-width: 250px;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .step-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .step-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(46, 204, 113, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            color: var(--primary);
+            font-size: 2rem;
+        }
+        
+        .step-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .step-description {
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+        
         /* Footer */
         footer {
             background: var(--dark);
@@ -650,7 +720,7 @@
         }
         
         /* Responsive */
-        @media (max-width: 768px) {
+        @media (max-width: 992px) {
             .hero {
                 flex-direction: column;
                 padding-top: 120px;
@@ -674,12 +744,59 @@
                 display: none;
             }
             
+            .hamburger {
+                display: flex;
+            }
+            
+            .mobile-nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background: white;
+                box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+                padding: 20px;
+                display: none;
+                flex-direction: column;
+                gap: 15px;
+                z-index: 999;
+            }
+            
+            .mobile-nav.active {
+                display: flex;
+            }
+            
+            .mobile-nav a {
+                color: var(--text-dark);
+                text-decoration: none;
+                font-weight: 500;
+                padding: 10px;
+                border-bottom: 1px solid #eee;
+            }
+        }
+        
+        @media (max-width: 768px) {
             .products-grid {
                 grid-template-columns: 1fr;
             }
             
             .payment-methods {
                 grid-template-columns: 1fr;
+            }
+            
+            .step-card {
+                min-width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                gap: 20px;
             }
         }
     </style>
@@ -693,17 +810,32 @@
                     <i class="fas fa-dollar-sign"></i>
                     STEP<span>DOLLAR</span>
                 </a>
+                
                 <div class="nav-links">
                     <a href="#products">Products</a>
-                    <a href="#">How It Works</a>
-                    <a href="#">Testimonials</a>
-                    <a href="#">Support</a>
+                    <a href="#how-it-works">How It Works</a>
+                    <a href="#testimonials">Testimonials</a>
+                    <a href="#support">Support</a>
                 </div>
+                
                 <div class="cart-icon">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count">0</span>
                 </div>
+                
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </nav>
+            
+            <div class="mobile-nav" id="mobileNav">
+                <a href="#products">Products</a>
+                <a href="#how-it-works">How It Works</a>
+                <a href="#testimonials">Testimonials</a>
+                <a href="#support">Support</a>
+            </div>
         </div>
     </header>
 
@@ -711,7 +843,7 @@
     <section class="hero">
         <div class="container">
             <div class="hero-content">
-                <h1>Premium Digital Products <br><span>For Your Creative Journey</span></h1>
+                <h1>Premium Digital Products <br>For Your Creative Journey</h1>
                 <p>Discover our exclusive collection of digital assets designed to elevate your projects. Instant download after purchase with secure payment options.</p>
                 <a href="#products" class="cta-button">Browse Products</a>
                 <div class="stats">
@@ -799,6 +931,40 @@
         </div>
     </section>
 
+    <!-- How It Works Section -->
+    <section id="how-it-works" class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">Simple steps to purchase and receive your digital products</p>
+            
+            <div class="steps">
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3 class="step-title">Browse Products</h3>
+                    <p class="step-description">Explore our collection of premium digital products tailored to your needs.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="step-title">Make Payment</h3>
+                    <p class="step-description">Select your product and complete payment via Bkash, Nagad, or Rocket.</p>
+                </div>
+                
+                <div class="step-card">
+                    <div class="step-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3 class="step-title">Receive Product</h3>
+                    <p class="step-description">Get your product via email within 30 minutes after successful payment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Payment Modal -->
     <div class="modal" id="paymentModal">
         <div class="modal-content">
@@ -851,7 +1017,12 @@
                     <input type="email" id="email" class="form-control" placeholder="Enter your email address">
                 </div>
                 
-                <button class="submit-btn">Complete Purchase</button>
+                <div class="form-group">
+                    <label for="phone">Your Phone Number</label>
+                    <input type="text" id="phone" class="form-control" placeholder="Enter your phone number">
+                </div>
+                
+                <button class="submit-btn" id="completePurchaseBtn">Complete Purchase</button>
             </div>
             
             <div class="success-message" id="successMessage">
@@ -859,7 +1030,7 @@
                 <h3>Thank You For Your Purchase!</h3>
                 <p>Your transaction has been completed successfully.</p>
                 <p>You'll receive your product via email within 30 minutes.</p>
-                <p>For any questions, contact our support team.</p>
+                <p>Order details have been sent to our team.</p>
             </div>
         </div>
     </div>
@@ -882,21 +1053,21 @@
                 <div class="footer-column">
                     <h3>Products</h3>
                     <ul class="footer-links">
-                        <li><a href="#">UI Kits</a></li>
-                        <li><a href="#">Icons</a></li>
-                        <li><a href="#">Templates</a></li>
-                        <li><a href="#">Presets</a></li>
-                        <li><a href="#">Fonts</a></li>
+                        <li><a href="#products">UI Kits</a></li>
+                        <li><a href="#products">Icons</a></li>
+                        <li><a href="#products">Templates</a></li>
+                        <li><a href="#products">Presets</a></li>
+                        <li><a href="#products">Fonts</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-column">
                     <h3>Support</h3>
                     <ul class="footer-links">
-                        <li><a href="#">FAQ</a></li>
-                        <li><a href="#">Payment Methods</a></li>
-                        <li><a href="#">Refund Policy</a></li>
-                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#support">FAQ</a></li>
+                        <li><a href="#support">Payment Methods</a></li>
+                        <li><a href="#support">Refund Policy</a></li>
+                        <li><a href="#support">Contact Us</a></li>
                     </ul>
                 </div>
                 
@@ -927,9 +1098,11 @@
             const amountInput = document.getElementById('amount');
             const paymentAmount = document.getElementById('payment-amount');
             const paymentMethods = document.querySelectorAll('.payment-method');
-            const submitBtn = document.querySelector('.submit-btn');
+            const submitBtn = document.getElementById('completePurchaseBtn');
             const successMessage = document.getElementById('successMessage');
             const cartCount = document.querySelector('.cart-count');
+            const hamburger = document.getElementById('hamburger');
+            const mobileNav = document.getElementById('mobileNav');
             let cartItems = 0;
             
             // Buy button click event
@@ -947,6 +1120,7 @@
                     // Reset form
                     document.getElementById('transaction').value = '';
                     document.getElementById('email').value = '';
+                    document.getElementById('phone').value = '';
                     paymentMethods.forEach(method => method.classList.remove('active'));
                     successMessage.style.display = 'none';
                     document.querySelector('.modal-body').style.display = 'block';
@@ -963,12 +1137,16 @@
             // Close modal
             closeModal.addEventListener('click', function() {
                 modal.style.display = 'none';
+                cartItems = 0;
+                cartCount.textContent = cartItems;
             });
             
             // Click outside modal to close
             window.addEventListener('click', function(e) {
                 if (e.target === modal) {
                     modal.style.display = 'none';
+                    cartItems = 0;
+                    cartCount.textContent = cartItems;
                 }
             });
             
@@ -984,7 +1162,8 @@
             submitBtn.addEventListener('click', function() {
                 const selectedMethod = document.querySelector('.payment-method.active');
                 const transactionId = document.getElementById('transaction').value;
-                const email = document.getElementById('email').value;
+                const customerEmail = document.getElementById('email').value;
+                const customerPhone = document.getElementById('phone').value;
                 
                 // Validation
                 if (!selectedMethod) {
@@ -997,8 +1176,13 @@
                     return;
                 }
                 
-                if (!email || !validateEmail(email)) {
+                if (!customerEmail || !validateEmail(customerEmail)) {
                     alert('Please enter a valid email address');
+                    return;
+                }
+                
+                if (!customerPhone || customerPhone.trim() === '') {
+                    alert('Please enter your phone number');
                     return;
                 }
                 
@@ -1007,29 +1191,108 @@
                 const amount = amountInput.value;
                 const method = selectedMethod.getAttribute('data-method');
                 
-                // In a real implementation, you would send this data to your server
-                // For this demo, we'll simulate sending to Telegram/WhatsApp
-                const message = `New Purchase!\nProduct: ${product}\nAmount: ${amount}\nPayment Method: ${method}\nTransaction ID: ${transactionId}\nEmail: ${email}`;
-                
-                // Simulate sending to Telegram/WhatsApp
-                console.log('Sending to Telegram/WhatsApp:', message);
+                // Send order details to email
+                sendOrderToEmail(product, amount, method, transactionId, customerEmail, customerPhone);
                 
                 // Show success message
                 document.querySelector('.modal-body').style.display = 'none';
                 successMessage.style.display = 'block';
-                
-                // Auto-close after 5 seconds
-                setTimeout(function() {
-                    modal.style.display = 'none';
-                    cartItems = 0;
-                    cartCount.textContent = cartItems;
-                }, 5000);
             });
             
             // Email validation
             function validateEmail(email) {
                 const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
                 return re.test(String(email).toLowerCase());
+            }
+            
+            // Mobile navigation toggle
+            hamburger.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+            });
+            
+            // Close mobile menu when clicking on links
+            mobileNav.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', function() {
+                    mobileNav.classList.remove('active');
+                });
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        window.scrollTo({
+                            top: target.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Function to send order details to email using EmailJS
+            function sendOrderToEmail(product, amount, method, transactionId, customerEmail, customerPhone) {
+                // Prepare email content
+                const subject = `New Order: ${product}`;
+                const body = `
+                    <h2>New Order on Step Dollar!</h2>
+                    <p><strong>Product:</strong> ${product}</p>
+                    <p><strong>Amount:</strong> ${amount}</p>
+                    <p><strong>Payment Method:</strong> ${method}</p>
+                    <p><strong>Transaction ID:</strong> ${transactionId}</p>
+                    <p><strong>Customer Email:</strong> ${customerEmail}</p>
+                    <p><strong>Customer Phone:</strong> ${customerPhone}</p>
+                    <p><strong>Order Time:</strong> ${new Date().toLocaleString()}</p>
+                `;
+                
+                // Create a form to submit the data
+                const form = document.createElement('form');
+                form.method = 'POST';
+                form.action = 'https://formsubmit.co/withhasib.yt@gmail.com';
+                form.style.display = 'none';
+                
+                // Add subject field
+                const subjectField = document.createElement('input');
+                subjectField.type = 'hidden';
+                subjectField.name = '_subject';
+                subjectField.value = subject;
+                form.appendChild(subjectField);
+                
+                // Add email body
+                const bodyField = document.createElement('input');
+                bodyField.type = 'hidden';
+                bodyField.name = 'message';
+                bodyField.value = body;
+                form.appendChild(bodyField);
+                
+                // Add honeypot field
+                const honeypot = document.createElement('input');
+                honeypot.type = 'text';
+                honeypot.name = '_honey';
+                honeypot.style.display = 'none';
+                form.appendChild(honeypot);
+                
+                // Add redirect URL
+                const redirect = document.createElement('input');
+                redirect.type = 'hidden';
+                redirect.name = '_next';
+                redirect.value = window.location.href + '?success=true';
+                form.appendChild(redirect);
+                
+                // Add to document and submit
+                document.body.appendChild(form);
+                form.submit();
+                
+                // Log to console for demonstration
+                console.log("Sending order details to withhasib.yt@gmail.com");
+                console.log("Product:", product);
+                console.log("Amount:", amount);
+                console.log("Payment Method:", method);
+                console.log("Transaction ID:", transactionId);
+                console.log("Customer Email:", customerEmail);
+                console.log("Customer Phone:", customerPhone);
             }
         });
     </script>
