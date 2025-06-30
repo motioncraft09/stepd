@@ -1,0 +1,1037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step Dollar | Premium Digital Products</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2ecc71;
+            --primary-dark: #27ae60;
+            --secondary: #16a085;
+            --accent: #f39c12;
+            --dark: #1a1a2e;
+            --light: #f8f9fa;
+            --success: #2ecc71;
+            --text-dark: #2c3e50;
+            --text-light: #7f8c8d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f8f9fa, #e9f7ef);
+            color: var(--text-dark);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 15px 0;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            text-decoration: none;
+        }
+        
+        .logo span {
+            color: var(--text-dark);
+        }
+        
+        .logo i {
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .cart-icon {
+            position: relative;
+            font-size: 1.4rem;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+        
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 150px 0 80px;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(to right, #f8f9fa 60%, #e9f7ef);
+        }
+        
+        .hero-content {
+            flex: 1;
+            padding-right: 40px;
+        }
+        
+        .hero-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            color: var(--text-dark);
+        }
+        
+        .hero h1 span {
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            color: var(--text-light);
+            line-height: 1.7;
+            max-width: 600px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            box-shadow: 0 8px 25px rgba(46, 204, 113, 0.4);
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(46, 204, 113, 0.6);
+        }
+        
+        .stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .stat-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            line-height: 1;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .hero-img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 20px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            transform: rotate(3deg);
+            transition: transform 0.5s ease;
+        }
+        
+        .hero-img:hover {
+            transform: rotate(0deg);
+        }
+        
+        /* Products Section */
+        .products {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            color: var(--text-dark);
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: var(--text-light);
+            margin-bottom: 60px;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: var(--accent);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            z-index: 2;
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+        
+        .product-info {
+            padding: 25px;
+        }
+        
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+        
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .product-price span {
+            font-size: 1rem;
+            color: var(--text-light);
+            text-decoration: line-through;
+            margin-right: 10px;
+        }
+        
+        .product-description {
+            color: var(--text-light);
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .buy-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+        
+        .buy-button:hover {
+            background: var(--primary-dark);
+        }
+        
+        /* Payment Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(5px);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+            animation: modalOpen 0.4s ease;
+        }
+        
+        @keyframes modalOpen {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .modal-header {
+            padding: 20px;
+            background: var(--primary);
+            position: relative;
+            text-align: center;
+        }
+        
+        .modal-title {
+            font-size: 1.5rem;
+            color: white;
+            margin: 0;
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .close-modal:hover {
+            color: var(--dark);
+        }
+        
+        .modal-body {
+            padding: 25px;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            color: var(--text-dark);
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(46, 204, 113, 0.2);
+        }
+        
+        .payment-methods {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 20px 0;
+        }
+        
+        .payment-method {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .payment-method:hover, .payment-method.active {
+            background: rgba(46, 204, 113, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .payment-method i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+            color: var(--primary-dark);
+        }
+        
+        .payment-method.active i {
+            color: var(--primary);
+        }
+        
+        .payment-info {
+            background: rgba(46, 204, 113, 0.05);
+            border-radius: 8px;
+            padding: 15px;
+            margin: 20px 0;
+            text-align: center;
+            border: 1px dashed var(--primary);
+        }
+        
+        .payment-info p {
+            margin-bottom: 5px;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+        
+        .submit-btn:hover {
+            opacity: 0.95;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(46, 204, 113, 0.4);
+        }
+        
+        /* Success Message */
+        .success-message {
+            display: none;
+            text-align: center;
+            padding: 40px 20px;
+        }
+        
+        .success-message i {
+            font-size: 4rem;
+            color: var(--success);
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        .success-message h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--text-dark);
+        }
+        
+        .success-message p {
+            color: var(--text-light);
+            line-height: 1.6;
+            margin-bottom: 10px;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            padding: 60px 0 20px;
+            margin-top: 80px;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+            color: white;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--primary);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .footer-links li i {
+            width: 25px;
+            color: var(--primary);
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background: var(--primary);
+            transform: translateY(-5px);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column;
+                padding-top: 120px;
+            }
+            
+            .hero-content {
+                padding-right: 0;
+                margin-bottom: 40px;
+                text-align: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .stats {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .payment-methods {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <i class="fas fa-dollar-sign"></i>
+                    STEP<span>DOLLAR</span>
+                </a>
+                <div class="nav-links">
+                    <a href="#products">Products</a>
+                    <a href="#">How It Works</a>
+                    <a href="#">Testimonials</a>
+                    <a href="#">Support</a>
+                </div>
+                <div class="cart-icon">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-count">0</span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Premium Digital Products <br><span>For Your Creative Journey</span></h1>
+                <p>Discover our exclusive collection of digital assets designed to elevate your projects. Instant download after purchase with secure payment options.</p>
+                <a href="#products" class="cta-button">Browse Products</a>
+                <div class="stats">
+                    <div class="stat-item">
+                        <span class="stat-number">5,000+</span>
+                        <span class="stat-label">Happy Customers</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">98%</span>
+                        <span class="stat-label">Satisfaction Rate</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-number">24/7</span>
+                        <span class="stat-label">Support</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-image">
+                <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Digital Products" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products">
+        <div class="container">
+            <h2 class="section-title">Our Digital Products</h2>
+            <p class="section-subtitle">High-quality digital assets for designers, developers, and content creators</p>
+            <div class="products-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <div class="product-badge">BEST SELLER</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200&q=80" alt="UI Design System">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">UI Design System Pro</h3>
+                        <div class="product-price">৳ 1,299 <span>৳ 2,499</span></div>
+                        <p class="product-description">Complete UI kit with 200+ components, templates, and style guides for modern web applications.</p>
+                        <button class="buy-button" data-product="UI Design System Pro" data-price="1299">Buy Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product 2 -->
+                <div class="product-card">
+                    <div class="product-badge">NEW</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1581276879432-15e50529f34b?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200&q=80" alt="Icon Pack">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Premium Icon Pack</h3>
+                        <div class="product-price">৳ 799 <span>৳ 1,299</span></div>
+                        <p class="product-description">500+ vector icons in multiple formats. Perfect for apps, websites, and presentations.</p>
+                        <button class="buy-button" data-product="Premium Icon Pack" data-price="799">Buy Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product 3 -->
+                <div class="product-card">
+                    <div class="product-badge">LIMITED</div>
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200&q=80" alt="Photography Presets">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Photography Presets Bundle</h3>
+                        <div class="product-price">৳ 999 <span>৳ 1,599</span></div>
+                        <p class="product-description">Professional Lightroom presets to transform your photos with one click. 50 unique styles included.</p>
+                        <button class="buy-button" data-product="Photography Presets Bundle" data-price="999">Buy Now</button>
+                    </div>
+                </div>
+                
+                <!-- Product 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=200&q=80" alt="Font Collection">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Modern Font Collection</h3>
+                        <div class="product-price">৳ 699 <span>৳ 999</span></div>
+                        <p class="product-description">20 premium fonts for all your design projects. Includes commercial license and web fonts.</p>
+                        <button class="buy-button" data-product="Modern Font Collection" data-price="699">Buy Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Payment Modal -->
+    <div class="modal" id="paymentModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Complete Your Purchase</h3>
+                <button class="close-modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="product">Product</label>
+                    <input type="text" id="product" class="form-control" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label for="amount">Amount to Pay (BDT)</label>
+                    <input type="text" id="amount" class="form-control" readonly>
+                </div>
+                
+                <div class="form-group">
+                    <label>Select Payment Method</label>
+                    <div class="payment-methods">
+                        <div class="payment-method" data-method="bkash">
+                            <i class="fas fa-mobile-alt"></i>
+                            <div>Bkash</div>
+                        </div>
+                        <div class="payment-method" data-method="nagad">
+                            <i class="fas fa-wallet"></i>
+                            <div>Nagad</div>
+                        </div>
+                        <div class="payment-method" data-method="rocket">
+                            <i class="fas fa-rocket"></i>
+                            <div>Rocket</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="payment-info">
+                    <p>Send payment to: <span class="highlight">01322149482</span></p>
+                    <p>Amount: <span id="payment-amount" class="highlight">৳ 0</span></p>
+                    <p>After payment, enter transaction ID below</p>
+                </div>
+                
+                <div class="form-group">
+                    <label for="transaction">Transaction ID</label>
+                    <input type="text" id="transaction" class="form-control" placeholder="Enter transaction ID">
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Your Email</label>
+                    <input type="email" id="email" class="form-control" placeholder="Enter your email address">
+                </div>
+                
+                <button class="submit-btn">Complete Purchase</button>
+            </div>
+            
+            <div class="success-message" id="successMessage">
+                <i class="fas fa-check-circle"></i>
+                <h3>Thank You For Your Purchase!</h3>
+                <p>Your transaction has been completed successfully.</p>
+                <p>You'll receive your product via email within 30 minutes.</p>
+                <p>For any questions, contact our support team.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>Step Dollar</h3>
+                    <p style="color: rgba(255,255,255,0.7); margin-bottom: 20px;">Premium digital products for designers, developers, and creators. Instant delivery after purchase.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Products</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">UI Kits</a></li>
+                        <li><a href="#">Icons</a></li>
+                        <li><a href="#">Templates</a></li>
+                        <li><a href="#">Presets</a></li>
+                        <li><a href="#">Fonts</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Support</h3>
+                    <ul class="footer-links">
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Payment Methods</a></li>
+                        <li><a href="#">Refund Policy</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul class="footer-links">
+                        <li><i class="fas fa-envelope"></i> support@stepdollar.com</li>
+                        <li><i class="fab fa-whatsapp"></i> +8801322149482</li>
+                        <li><i class="fab fa-telegram"></i> t.me/stepdollar</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                &copy; 2023 Step Dollar. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal elements
+            const modal = document.getElementById('paymentModal');
+            const closeModal = document.querySelector('.close-modal');
+            const buyButtons = document.querySelectorAll('.buy-button');
+            const productInput = document.getElementById('product');
+            const amountInput = document.getElementById('amount');
+            const paymentAmount = document.getElementById('payment-amount');
+            const paymentMethods = document.querySelectorAll('.payment-method');
+            const submitBtn = document.querySelector('.submit-btn');
+            const successMessage = document.getElementById('successMessage');
+            const cartCount = document.querySelector('.cart-count');
+            let cartItems = 0;
+            
+            // Buy button click event
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const product = this.getAttribute('data-product');
+                    const price = this.getAttribute('data-price');
+                    
+                    // Set product and price in modal
+                    productInput.value = product;
+                    amountInput.value = '৳ ' + price;
+                    paymentAmount.textContent = '৳ ' + price;
+                    
+                    // Reset form
+                    document.getElementById('transaction').value = '';
+                    document.getElementById('email').value = '';
+                    paymentMethods.forEach(method => method.classList.remove('active'));
+                    successMessage.style.display = 'none';
+                    document.querySelector('.modal-body').style.display = 'block';
+                    
+                    // Show modal
+                    modal.style.display = 'flex';
+                    
+                    // Add to cart
+                    cartItems++;
+                    cartCount.textContent = cartItems;
+                });
+            });
+            
+            // Close modal
+            closeModal.addEventListener('click', function() {
+                modal.style.display = 'none';
+            });
+            
+            // Click outside modal to close
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+            
+            // Payment method selection
+            paymentMethods.forEach(method => {
+                method.addEventListener('click', function() {
+                    paymentMethods.forEach(m => m.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            // Form submission
+            submitBtn.addEventListener('click', function() {
+                const selectedMethod = document.querySelector('.payment-method.active');
+                const transactionId = document.getElementById('transaction').value;
+                const email = document.getElementById('email').value;
+                
+                // Validation
+                if (!selectedMethod) {
+                    alert('Please select a payment method');
+                    return;
+                }
+                
+                if (!transactionId) {
+                    alert('Please enter your transaction ID');
+                    return;
+                }
+                
+                if (!email || !validateEmail(email)) {
+                    alert('Please enter a valid email address');
+                    return;
+                }
+                
+                // Get product info
+                const product = productInput.value;
+                const amount = amountInput.value;
+                const method = selectedMethod.getAttribute('data-method');
+                
+                // In a real implementation, you would send this data to your server
+                // For this demo, we'll simulate sending to Telegram/WhatsApp
+                const message = `New Purchase!\nProduct: ${product}\nAmount: ${amount}\nPayment Method: ${method}\nTransaction ID: ${transactionId}\nEmail: ${email}`;
+                
+                // Simulate sending to Telegram/WhatsApp
+                console.log('Sending to Telegram/WhatsApp:', message);
+                
+                // Show success message
+                document.querySelector('.modal-body').style.display = 'none';
+                successMessage.style.display = 'block';
+                
+                // Auto-close after 5 seconds
+                setTimeout(function() {
+                    modal.style.display = 'none';
+                    cartItems = 0;
+                    cartCount.textContent = cartItems;
+                }, 5000);
+            });
+            
+            // Email validation
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+                return re.test(String(email).toLowerCase());
+            }
+        });
+    </script>
+</body>
+</html>
