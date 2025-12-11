@@ -639,7 +639,7 @@
             }
         }
         
-        /* Products Section - Mobile Optimized Horizontal Layout */
+        /* Products Section - Grid Layout */
         .apple-products {
             padding: 3rem 0;
             position: relative;
@@ -653,7 +653,7 @@
         
         .section-header {
             text-align: center;
-            margin-bottom: 2rem;
+            margin-bottom: 3rem;
             padding: 0 1rem;
         }
         
@@ -713,100 +713,31 @@
             }
         }
         
-        /* Horizontal Scroll Container - Mobile Optimized */
-        .products-horizontal-container {
-            position: relative;
+        /* Products Grid - Side by side layout */
+        .products-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
             width: 100%;
             margin: 0 auto;
-            padding: 0 0 2rem;
         }
         
-        .products-scroll-wrapper {
-            position: relative;
-            overflow: hidden;
-            padding: 0 20px;
-        }
-        
-        @media (min-width: 769px) {
-            .products-scroll-wrapper {
-                padding: 0;
+        @media (min-width: 481px) {
+            .products-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
             }
         }
         
-        .products-horizontal {
-            display: flex;
-            gap: 20px;
-            padding: 20px 0;
-            overflow-x: auto;
-            scroll-behavior: smooth;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            -webkit-overflow-scrolling: touch;
-            padding-left: 20px;
-            padding-right: 20px;
-        }
-        
-        .products-horizontal::-webkit-scrollbar {
-            display: none;
-        }
-        
         @media (min-width: 769px) {
-            .products-horizontal {
+            .products-grid {
+                grid-template-columns: repeat(3, 1fr);
                 gap: 30px;
-                padding-left: 22px;
-                padding-right: 22px;
             }
         }
         
-        /* Scroll Navigation - Hidden on Mobile */
-        .scroll-nav {
-            display: none;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 44px;
-            height: 44px;
-            background: var(--apple-white);
-            border: 1px solid var(--apple-gray-2);
-            border-radius: 50%;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            z-index: 100;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        .scroll-nav:hover {
-            background: var(--apple-gray-1);
-            transform: translateY(-50%) scale(1.1);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
-        }
-        
-        .scroll-nav.prev {
-            left: -22px;
-        }
-        
-        .scroll-nav.next {
-            right: -22px;
-        }
-        
-        .scroll-nav i {
-            font-size: 1.25rem;
-            color: var(--text-primary);
-        }
-        
-        @media (min-width: 769px) {
-            .scroll-nav {
-                display: flex;
-            }
-        }
-        
-        /* Horizontal Product Card - Mobile Optimized */
-        .product-card-horizontal {
-            flex: 0 0 auto;
-            width: 280px;
+        /* Product Card - Grid Version */
+        .product-card {
             background: var(--card-bg);
             border-radius: 16px;
             overflow: hidden;
@@ -815,23 +746,19 @@
             transition: all 0.3s ease;
             position: relative;
             cursor: pointer;
-        }
-        
-        @media (min-width: 481px) {
-            .product-card-horizontal {
-                width: 320px;
-            }
+            height: 100%;
+            display: flex;
+            flex-direction: column;
         }
         
         @media (min-width: 769px) {
-            .product-card-horizontal {
-                width: 380px;
+            .product-card {
                 border-radius: 20px;
                 box-shadow: var(--card-shadow);
                 transition: all 0.4s cubic-bezier(0.215, 0.61, 0.355, 1);
             }
             
-            .product-card-horizontal:hover {
+            .product-card:hover {
                 transform: translateY(-12px) scale(1.02);
                 box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
                 border-color: rgba(0, 0, 0, 0.15);
@@ -861,7 +788,7 @@
         }
         
         .product-image-container {
-            height: 180px;
+            height: 200px;
             overflow: hidden;
             position: relative;
             background: linear-gradient(135deg, #F5F5F7 0%, #E8E8ED 100%);
@@ -869,13 +796,13 @@
         
         @media (min-width: 481px) {
             .product-image-container {
-                height: 200px;
+                height: 220px;
             }
         }
         
         @media (min-width: 769px) {
             .product-image-container {
-                height: 240px;
+                height: 250px;
             }
         }
         
@@ -887,13 +814,16 @@
         }
         
         @media (min-width: 769px) {
-            .product-card-horizontal:hover .product-image {
+            .product-card:hover .product-image {
                 transform: scale(1.08);
             }
         }
         
         .product-content {
             padding: 1.5rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         @media (min-width: 769px) {
@@ -958,6 +888,7 @@
             -webkit-line-clamp: 3;
             -webkit-box-orient: vertical;
             overflow: hidden;
+            flex: 1;
         }
         
         @media (min-width: 769px) {
@@ -970,6 +901,7 @@
         .product-actions {
             display: flex;
             gap: 0.75rem;
+            margin-top: auto;
         }
         
         .product-button {
@@ -1027,30 +959,6 @@
             .product-button.details:hover {
                 transform: translateY(-2px);
             }
-        }
-        
-        /* Scroll Indicators - Mobile Optimized */
-        .scroll-indicators {
-            display: flex;
-            justify-content: center;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            padding: 0 1rem;
-        }
-        
-        .scroll-indicator {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--apple-gray-2);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            -webkit-tap-highlight-color: transparent;
-        }
-        
-        .scroll-indicator.active {
-            background: var(--apple-blue);
-            transform: scale(1.2);
         }
         
         /* Product Popup - Mobile Optimized */
@@ -2117,7 +2025,6 @@
             .product-button,
             .cart-icon,
             .mobile-menu-button,
-            .scroll-indicator,
             .share-platform,
             .payment-method {
                 min-height: 44px;
@@ -2125,7 +2032,7 @@
             }
             
             /* Prevent text selection on interactive elements */
-            .product-card-horizontal,
+            .product-card,
             .cart-item,
             button,
             a {
@@ -2136,7 +2043,6 @@
             }
             
             /* Improve scroll performance */
-            .products-horizontal,
             .cart-items,
             .popup-details,
             .payment-body {
@@ -2146,11 +2052,10 @@
             
             /* Remove hover effects on touch devices */
             @media (hover: none) and (pointer: coarse) {
-                .product-card-horizontal:hover,
+                .product-card:hover,
                 .product-button:hover,
                 .cart-icon:hover,
                 .mobile-menu-button:hover,
-                .scroll-nav:hover,
                 .share-platform:hover,
                 .payment-method:hover,
                 .popup-buy-button:hover,
@@ -2284,7 +2189,7 @@
         </div>
     </section>
 
-    <!-- Products Section - Horizontal Layout -->
+    <!-- Products Section - Grid Layout -->
     <section class="apple-products" id="products">
         <div class="container">
             <div class="section-header">
@@ -2293,181 +2198,161 @@
                 <p class="section-description">Handpicked tools and resources designed to enhance your workflow and elevate your creative output.</p>
             </div>
             
-            <!-- Horizontal Products Container -->
-            <div class="products-horizontal-container">
-                <div class="products-scroll-wrapper">
-                    <!-- Scroll Navigation -->
-                    <button class="scroll-nav prev" id="scrollPrev">
-                        <i class="fas fa-chevron-left"></i>
-                    </button>
-                    <button class="scroll-nav next" id="scrollNext">
-                        <i class="fas fa-chevron-right"></i>
-                    </button>
-                    
-                    <!-- Horizontal Products Grid -->
-                    <div class="products-horizontal" id="productsHorizontal">
-                        <!-- Product 1 -->
-                        <div class="product-card-horizontal" data-product-id="1">
-                            <div class="product-badge">Best Seller</div>
-                            <div class="product-image-container">
-                                <img src="https://i.ibb.co.com/Fb6cdVhp/nnnnnnnnn.png" alt="Editing Asset Pack" class="product-image">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Editing Asset Collection</h3>
-                                <div class="product-price">
-                                    ৳149
-                                    <span class="product-original-price">৳300</span>
-                                </div>
-                                <p class="product-description">Professional video editing assets designed to streamline your workflow and enhance visual storytelling with cinematic quality.</p>
-                                <div class="product-actions">
-                                    <button class="product-button buy" data-product-id="1" data-product-name="Editing Asset Collection" data-price="149" data-image="https://i.ibb.co.com/Fb6cdVhp/nnnnnnnnn.png">
-                                        <i class="fas fa-shopping-bag"></i>
-                                        Add to Cart
-                                    </button>
-                                    <button class="product-button details" data-product-id="1">
-                                        <i class="fas fa-info-circle"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
+            <!-- Products Grid - Side by side layout -->
+            <div class="products-grid" id="productsGrid">
+                <!-- Product 1 -->
+                <div class="product-card" data-product-id="1">
+                    <div class="product-badge">Best Seller</div>
+                    <div class="product-image-container">
+                        <img src="https://i.ibb.co.com/Fb6cdVhp/nnnnnnnnn.png" alt="Editing Asset Pack" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Editing Asset Collection</h3>
+                        <div class="product-price">
+                            ৳149
+                            <span class="product-original-price">৳300</span>
                         </div>
-
-                        <!-- Product 2 -->
-                        <div class="product-card-horizontal" data-product-id="2">
-                            <div class="product-badge">New</div>
-                            <div class="product-image-container">
-                                <img src="https://i.ibb.co.com/8ChqV4p/mail-finder.png" alt="Mail Finder Extension" class="product-image">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Mail Finder Extension</h3>
-                                <div class="product-price">
-                                    ৳399
-                                    <span class="product-original-price">৳499</span>
-                                </div>
-                                <p class="product-description">Advanced Chrome extension for instant email detection and extraction from any webpage, boosting your outreach efficiency.</p>
-                                <div class="product-actions">
-                                    <button class="product-button buy" data-product-id="2" data-product-name="Mail Finder Extension" data-price="399" data-image="https://i.ibb.co.com/8ChqV4p/mail-finder.png">
-                                        <i class="fas fa-shopping-bag"></i>
-                                        Add to Cart
-                                    </button>
-                                    <button class="product-button details" data-product-id="2">
-                                        <i class="fas fa-info-circle"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Product 3 -->
-                        <div class="product-card-horizontal" data-product-id="3">
-                            <div class="product-badge">Limited</div>
-                            <div class="product-image-container">
-                                <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Photography Presets" class="product-image">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Photography Presets</h3>
-                                <div class="product-price">
-                                    ৳999
-                                    <span class="product-original-price">৳1,599</span>
-                                </div>
-                                <p class="product-description">Comprehensive Lightroom presets bundle featuring 50 unique styles for transforming your photography with professional results.</p>
-                                <div class="product-actions">
-                                    <button class="product-button buy" data-product-id="3" data-product-name="Photography Presets" data-price="999" data-image="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80">
-                                        <i class="fas fa-shopping-bag"></i>
-                                        Add to Cart
-                                    </button>
-                                    <button class="product-button details" data-product-id="3">
-                                        <i class="fas fa-info-circle"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Product 4 -->
-                        <div class="product-card-horizontal" data-product-id="4">
-                            <div class="product-image-container">
-                                <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Font Collection" class="product-image">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Modern Type Collection</h3>
-                                <div class="product-price">
-                                    ৳699
-                                    <span class="product-original-price">৳999</span>
-                                </div>
-                                <p class="product-description">Premium font collection featuring 20 contemporary typefaces with full commercial licensing for professional design projects.</p>
-                                <div class="product-actions">
-                                    <button class="product-button buy" data-product-id="4" data-product-name="Modern Type Collection" data-price="699" data-image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80">
-                                        <i class="fas fa-shopping-bag"></i>
-                                        Add to Cart
-                                    </button>
-                                    <button class="product-button details" data-product-id="4">
-                                        <i class="fas fa-info-circle"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Product 5 - Additional Product -->
-                        <div class="product-card-horizontal" data-product-id="5">
-                            <div class="product-badge">Popular</div>
-                            <div class="product-image-container">
-                                <img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="UI Kit" class="product-image">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Modern UI Kit</h3>
-                                <div class="product-price">
-                                    ৳899
-                                    <span class="product-original-price">৳1,299</span>
-                                </div>
-                                <p class="product-description">Complete UI kit with 150+ components for modern web and mobile applications. Includes Figma, Sketch, and Adobe XD files.</p>
-                                <div class="product-actions">
-                                    <button class="product-button buy" data-product-id="5" data-product-name="Modern UI Kit" data-price="899" data-image="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80">
-                                        <i class="fas fa-shopping-bag"></i>
-                                        Add to Cart
-                                    </button>
-                                    <button class="product-button details" data-product-id="5">
-                                        <i class="fas fa-info-circle"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Product 6 - Additional Product -->
-                        <div class="product-card-horizontal" data-product-id="6">
-                            <div class="product-badge">Trending</div>
-                            <div class="product-image-container">
-                                <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Icon Pack" class="product-image">
-                            </div>
-                            <div class="product-content">
-                                <h3 class="product-title">Premium Icon Pack</h3>
-                                <div class="product-price">
-                                    ৳499
-                                    <span class="product-original-price">৳799</span>
-                                </div>
-                                <p class="product-description">Collection of 500+ premium icons in multiple formats and styles. Perfect for web, mobile, and desktop applications.</p>
-                                <div class="product-actions">
-                                    <button class="product-button buy" data-product-id="6" data-product-name="Premium Icon Pack" data-price="499" data-image="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80">
-                                        <i class="fas fa-shopping-bag"></i>
-                                        Add to Cart
-                                    </button>
-                                    <button class="product-button details" data-product-id="6">
-                                        <i class="fas fa-info-circle"></i>
-                                        Details
-                                    </button>
-                                </div>
-                            </div>
+                        <p class="product-description">Professional video editing assets designed to streamline your workflow and enhance visual storytelling with cinematic quality.</p>
+                        <div class="product-actions">
+                            <button class="product-button buy" data-product-id="1" data-product-name="Editing Asset Collection" data-price="149" data-image="https://i.ibb.co.com/Fb6cdVhp/nnnnnnnnn.png">
+                                <i class="fas fa-shopping-bag"></i>
+                                Add to Cart
+                            </button>
+                            <button class="product-button details" data-product-id="1">
+                                <i class="fas fa-info-circle"></i>
+                                Details
+                            </button>
                         </div>
                     </div>
                 </div>
-                
-                <!-- Scroll Indicators -->
-                <div class="scroll-indicators" id="scrollIndicators">
-                    <span class="scroll-indicator active" data-index="0"></span>
-                    <span class="scroll-indicator" data-index="1"></span>
-                    <span class="scroll-indicator" data-index="2"></span>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-product-id="2">
+                    <div class="product-badge">New</div>
+                    <div class="product-image-container">
+                        <img src="https://i.ibb.co.com/8ChqV4p/mail-finder.png" alt="Mail Finder Extension" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Mail Finder Extension</h3>
+                        <div class="product-price">
+                            ৳399
+                            <span class="product-original-price">৳499</span>
+                        </div>
+                        <p class="product-description">Advanced Chrome extension for instant email detection and extraction from any webpage, boosting your outreach efficiency.</p>
+                        <div class="product-actions">
+                            <button class="product-button buy" data-product-id="2" data-product-name="Mail Finder Extension" data-price="399" data-image="https://i.ibb.co.com/8ChqV4p/mail-finder.png">
+                                <i class="fas fa-shopping-bag"></i>
+                                Add to Cart
+                            </button>
+                            <button class="product-button details" data-product-id="2">
+                                <i class="fas fa-info-circle"></i>
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-product-id="3">
+                    <div class="product-badge">Limited</div>
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Photography Presets" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Photography Presets</h3>
+                        <div class="product-price">
+                            ৳999
+                            <span class="product-original-price">৳1,599</span>
+                        </div>
+                        <p class="product-description">Comprehensive Lightroom presets bundle featuring 50 unique styles for transforming your photography with professional results.</p>
+                        <div class="product-actions">
+                            <button class="product-button buy" data-product-id="3" data-product-name="Photography Presets" data-price="999" data-image="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80">
+                                <i class="fas fa-shopping-bag"></i>
+                                Add to Cart
+                            </button>
+                            <button class="product-button details" data-product-id="3">
+                                <i class="fas fa-info-circle"></i>
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 4 -->
+                <div class="product-card" data-product-id="4">
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Font Collection" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Modern Type Collection</h3>
+                        <div class="product-price">
+                            ৳699
+                            <span class="product-original-price">৳999</span>
+                        </div>
+                        <p class="product-description">Premium font collection featuring 20 contemporary typefaces with full commercial licensing for professional design projects.</p>
+                        <div class="product-actions">
+                            <button class="product-button buy" data-product-id="4" data-product-name="Modern Type Collection" data-price="699" data-image="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80">
+                                <i class="fas fa-shopping-bag"></i>
+                                Add to Cart
+                            </button>
+                            <button class="product-button details" data-product-id="4">
+                                <i class="fas fa-info-circle"></i>
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 5 - Additional Product -->
+                <div class="product-card" data-product-id="5">
+                    <div class="product-badge">Popular</div>
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="UI Kit" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Modern UI Kit</h3>
+                        <div class="product-price">
+                            ৳899
+                            <span class="product-original-price">৳1,299</span>
+                        </div>
+                        <p class="product-description">Complete UI kit with 150+ components for modern web and mobile applications. Includes Figma, Sketch, and Adobe XD files.</p>
+                        <div class="product-actions">
+                            <button class="product-button buy" data-product-id="5" data-product-name="Modern UI Kit" data-price="899" data-image="https://images.unsplash.com/photo-1558655146-364adaf1fcc9?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80">
+                                <i class="fas fa-shopping-bag"></i>
+                                Add to Cart
+                            </button>
+                            <button class="product-button details" data-product-id="5">
+                                <i class="fas fa-info-circle"></i>
+                                Details
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Product 6 - Additional Product -->
+                <div class="product-card" data-product-id="6">
+                    <div class="product-badge">Trending</div>
+                    <div class="product-image-container">
+                        <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80" alt="Icon Pack" class="product-image">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Premium Icon Pack</h3>
+                        <div class="product-price">
+                            ৳499
+                            <span class="product-original-price">৳799</span>
+                        </div>
+                        <p class="product-description">Collection of 500+ premium icons in multiple formats and styles. Perfect for web, mobile, and desktop applications.</p>
+                        <div class="product-actions">
+                            <button class="product-button buy" data-product-id="6" data-product-name="Premium Icon Pack" data-price="499" data-image="https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&h=400&q=80">
+                                <i class="fas fa-shopping-bag"></i>
+                                Add to Cart
+                            </button>
+                            <button class="product-button details" data-product-id="6">
+                                <i class="fas fa-info-circle"></i>
+                                Details
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -2670,7 +2555,7 @@
             const style = document.createElement('style');
             style.textContent = `
                 @media (hover: none) and (pointer: coarse) {
-                    .product-card-horizontal:hover {
+                    .product-card:hover {
                         transform: none !important;
                         box-shadow: var(--card-shadow) !important;
                     }
@@ -2811,128 +2696,11 @@
             const successModal = document.getElementById('successModal');
             const successClose = document.getElementById('successClose');
             
-            // Horizontal Scroll Elements
-            const productsHorizontal = document.getElementById('productsHorizontal');
-            const scrollPrev = document.getElementById('scrollPrev');
-            const scrollNext = document.getElementById('scrollNext');
-            const scrollIndicators = document.getElementById('scrollIndicators');
-
             // Initialize cart display
             updateCartDisplay();
 
-            // Initialize horizontal scroll
-            initHorizontalScroll();
-
             // Initialize event listeners
             initEventListeners();
-
-            function initHorizontalScroll() {
-                const productCards = document.querySelectorAll('.product-card-horizontal');
-                const isMobileView = window.innerWidth < 769;
-                const cardWidth = isMobileView ? 280 : 380;
-                const gap = isMobileView ? 20 : 30;
-                const totalCardWidth = cardWidth + gap;
-                let currentIndex = 0;
-                
-                // Update scroll indicators
-                function updateIndicators() {
-                    const indicators = scrollIndicators.querySelectorAll('.scroll-indicator');
-                    const totalCards = productCards.length;
-                    const visibleCards = Math.floor(productsHorizontal.clientWidth / totalCardWidth);
-                    const maxIndex = Math.max(0, totalCards - visibleCards);
-                    
-                    // Clear existing indicators
-                    scrollIndicators.innerHTML = '';
-                    
-                    // Create indicators based on scrollable positions
-                    const indicatorCount = Math.min(4, maxIndex + 1);
-                    for (let i = 0; i < indicatorCount; i++) {
-                        const indicator = document.createElement('span');
-                        indicator.className = 'scroll-indicator';
-                        indicator.setAttribute('data-index', i);
-                        if (i === currentIndex) indicator.classList.add('active');
-                        indicator.addEventListener('click', () => scrollToIndex(i * Math.ceil(totalCards / indicatorCount)));
-                        scrollIndicators.appendChild(indicator);
-                    }
-                }
-                
-                // Scroll to specific index
-                function scrollToIndex(index) {
-                    const totalCards = productCards.length;
-                    const visibleCards = Math.floor(productsHorizontal.clientWidth / totalCardWidth);
-                    const maxIndex = Math.max(0, totalCards - visibleCards);
-                    currentIndex = Math.max(0, Math.min(index, maxIndex));
-                    
-                    productsHorizontal.scrollTo({
-                        left: currentIndex * totalCardWidth,
-                        behavior: 'smooth'
-                    });
-                    
-                    updateIndicators();
-                }
-                
-                // Next button
-                if (scrollPrev) {
-                    scrollPrev.addEventListener('click', () => {
-                        scrollToIndex(currentIndex - 1);
-                    });
-                }
-                
-                // Previous button
-                if (scrollNext) {
-                    scrollNext.addEventListener('click', () => {
-                        scrollToIndex(currentIndex + 1);
-                    });
-                }
-                
-                // Update indicators on scroll
-                productsHorizontal.addEventListener('scroll', () => {
-                    const scrollPosition = productsHorizontal.scrollLeft;
-                    currentIndex = Math.round(scrollPosition / totalCardWidth);
-                    updateIndicators();
-                });
-                
-                // Initialize indicators
-                updateIndicators();
-                
-                // Handle window resize
-                let resizeTimer;
-                window.addEventListener('resize', () => {
-                    clearTimeout(resizeTimer);
-                    resizeTimer = setTimeout(() => {
-                        updateIndicators();
-                    }, 250);
-                });
-                
-                // Touch and swipe handling for mobile
-                if (isTouchDevice) {
-                    let startX = 0;
-                    let scrollLeft = 0;
-                    let isDragging = false;
-                    
-                    productsHorizontal.addEventListener('touchstart', (e) => {
-                        startX = e.touches[0].pageX;
-                        scrollLeft = productsHorizontal.scrollLeft;
-                        isDragging = true;
-                    }, { passive: true });
-                    
-                    productsHorizontal.addEventListener('touchmove', (e) => {
-                        if (!isDragging) return;
-                        e.preventDefault();
-                        const x = e.touches[0].pageX;
-                        const walk = (x - startX) * 2;
-                        productsHorizontal.scrollLeft = scrollLeft - walk;
-                    }, { passive: false });
-                    
-                    productsHorizontal.addEventListener('touchend', () => {
-                        isDragging = false;
-                        // Snap to nearest card
-                        const scrollPosition = productsHorizontal.scrollLeft;
-                        currentIndex = Math.round(scrollPosition / totalCardWidth);
-                        scrollToIndex(currentIndex);
-                    });
-                }
-            }
 
             function initEventListeners() {
                 // Mobile menu toggle
@@ -2998,7 +2766,7 @@
                 });
 
                 // Product cards - touch/click handling
-                document.querySelectorAll('.product-card-horizontal').forEach(card => {
+                document.querySelectorAll('.product-card').forEach(card => {
                     card.addEventListener('click', function(e) {
                         if (!e.target.closest('.product-button')) {
                             const productId = parseInt(this.getAttribute('data-product-id'));
